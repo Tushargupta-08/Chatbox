@@ -1,0 +1,71 @@
+# ----------------
+# Node / Backend
+# ----------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+.pnpm-debug.log
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+logs/*.log
+*.log.*
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Build output
+dist/
+build/
+.cache/
+.tmp/
+coverage/
+
+# ----------------
+# Frontend (Vite/React)
+# ----------------
+# Local development files
+.vite/
+*.tsbuildinfo
+
+# Dependency directories
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# ----------------
+# IDE / Editor
+# ----------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# ----------------
+# Misc
+# ----------------
+*.tgz
+*.bak
+*.tmp
+*.log
+*.out
+*.err
+
+# ----------------
+# MongoDB dump
+# ----------------
+dump/

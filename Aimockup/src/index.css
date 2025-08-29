@@ -1,0 +1,11 @@
+
+@import "tailwindcss";
+
+
+html {
+  @apply bg-white text-black;
+}
+
+html.dark {
+  @apply bg-zinc-950 text-white;
+}
