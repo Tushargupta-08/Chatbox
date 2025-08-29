@@ -20,12 +20,12 @@ app.get("/", (req, res) => {
 });
 
 
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log("✅ MongoDB connected");
-    app.listen(port, () => {
-      console.log(`🚀 Server running on http://localhost:${port}`);
-    });
-  })
-  .catch((err) => console.error("❌ Mongo error:", err));
+// mongoose
+//   .connect(process.env.MONGO_URI)
+//   .then(() => {
+//     console.log("✅ MongoDB connected");
+//     app.listen(port, () => {
+//       console.log(`🚀 Server running on http://localhost:${port}`);
+//     });
+//   })
+//   .catch((err) => console.error("❌ Mongo error:", err));
