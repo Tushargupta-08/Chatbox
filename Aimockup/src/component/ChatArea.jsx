@@ -495,12 +495,15 @@ async function onSend(prompt) {
   setIsGenerating(true);
 
   try {
-   //update when you deploy backend
-    const res = await fetch("http://localhost:5000/api/chat", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/chat`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: prompt, model: "gpt-4o-mini" }),
     });
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
 
     const reader = res.body.getReader();
     const decoder = new TextDecoder("utf-8");
@@ -519,22 +522,32 @@ async function onSend(prompt) {
 
         reply += token;
 
-        // update UI live
+        // ✅ Live update assistant message while streaming
         setActiveChat((c) => ({
           ...c,
           messages: [
-            ...c.messages.filter((m) => m.role !== "assistant"),
+            ...c.messages.filter((m) => m.id !== "streaming"),
             { id: "streaming", role: "assistant", content: reply },
           ],
         }));
       }
     }
+
+    // ✅ Finalize streaming message (replace temp ID with unique one)
+    setActiveChat((c) => ({
+      ...c,
+      messages: [
+        ...c.messages.filter((m) => m.id !== "streaming"),
+        { id: Date.now().toString(), role: "assistant", content: reply },
+      ],
+    }));
   } catch (err) {
     console.error("❌ Error:", err);
   } finally {
     setIsGenerating(false);
   }
 }
+
 
 
 
